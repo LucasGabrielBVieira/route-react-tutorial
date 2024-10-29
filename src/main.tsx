@@ -9,8 +9,14 @@ createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />}>
+        <Route index element={
+          <h1 style={{padding: "1rem"}}>Ta procurando o que, otário?</h1>
+        }/>
         <Route path="expenses" element={<Expenses />} />
         <Route path="invoices" element={<Invoices />} >
+          <Route index element={
+            <h4 style={{padding: "1rem"}}>Rota Padrão</h4>
+          }/>
           <Route path=":invoiceId" element={<Invoice/>}/>
         </Route>
       </Route>
