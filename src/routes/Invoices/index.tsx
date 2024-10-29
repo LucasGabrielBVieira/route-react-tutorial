@@ -1,6 +1,7 @@
 import "./style.css";
-import { NavLink, Outlet, useSearchParams } from "react-router-dom";
+import { Outlet, useSearchParams } from "react-router-dom";
 import { getInvoices } from "../../data";
+import QueryLink from "../../components/QueryLink";
 
 function Invoices() {
   const invoices = getInvoices();
@@ -9,9 +10,6 @@ function Invoices() {
 
   return (
     <>
-      <main style={{ padding: "1rem 0" }}>
-        <h2>Invoices</h2>
-      </main>
       <div style={{ display: "flex" }}>
         <nav
           style={{
@@ -37,13 +35,14 @@ function Invoices() {
             const filter = invoice.name.toLowerCase();
             return filter.startsWith(name.toLowerCase());
           }).map((invoice) => (
-            <NavLink
-              className={({ isActive }) => (isActive ? "nav-red" : "nav-blue")}
+            <QueryLink
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              className={({ isActive }: any) => (isActive ? "nav-red" : "nav-blue")}
               to={`/invoices/${invoice.number}`}
               key={invoice.number}
             >
               {invoice.name}
-            </NavLink>
+            </QueryLink>
           ))}
         </nav>
         <Outlet />
