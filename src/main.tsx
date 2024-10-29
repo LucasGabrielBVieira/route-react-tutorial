@@ -11,6 +11,12 @@ createRoot(document.getElementById("root")!).render(
         <Route path="/expenses" element={<Expenses />} />
         <Route path="/invoices" element={<Invoices />} />
       </Route>
+      <Route path="*"
+        element={
+          <main style={{padding: "1rem"}}>
+            <h2>Nada encontrado</h2>
+          </main>
+        }/>
     </Routes>
   </BrowserRouter>
 );
